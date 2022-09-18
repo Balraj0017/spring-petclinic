@@ -15,16 +15,14 @@ pipeline {
 		}	
            }
            
-	   stage('Build') { 
-                steps {
-                  echo "Cleaning and packaging..."
-                  sh 'mvn clean package'
-                }
-           }
+// 	   stage('Build') { 
+//                 steps {
+//                   sh 'mvn clean package'
+//                 }
+//            }
 	    
 	   stage('Test') { 
 		steps {
-	          echo "Testing..."
 		  sh './mvnw clean package'
 		}
 	   }
