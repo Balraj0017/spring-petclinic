@@ -29,9 +29,11 @@ pipeline {
             
             stage('Docker build'){
          steps{
-             script{
+           
                  sh 'docker build -t balraj0017/app1:latest .'
              }
        }
+            
+                    
     }
 }
