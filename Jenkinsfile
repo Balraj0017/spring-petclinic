@@ -39,7 +39,7 @@ pipeline {
 //        }
             stage('Docker push'){
         steps{
-            withCredentials([string(credentialsId: 'bhavi', variable: 'TOKEN')]) {
+            withCredentials([string(credentialsId: 'docker-push', variable: 'TOKEN')]) {
             sh 'docker login -u balraj0017 -p $TOKEN'
 
             sh 'docker push balraj0017/app:latest'
