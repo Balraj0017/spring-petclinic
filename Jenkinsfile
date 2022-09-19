@@ -4,13 +4,13 @@ pipeline {
 // 		DOCKERHUB_CREDENTIALS=credentials('bhavi')
 // 	}
 
-// 	environment {
+	environment {
 		
-// 		PROJECT_ID = 'third-fire-260721'
-//                 CLUSTER_NAME = 'k8s-cluster'
-//                 LOCATION = 'europe-north1-a'
-//                 CREDENTIALS_ID = 'kubernetes'		
-// 	}
+		PROJECT_ID = 'astute-might-359211'
+                CLUSTER_NAME = 'cluster-1-clone-1'
+                LOCATION = 'asia-south1-a'
+                CREDENTIALS_ID = 'jenkins-pro'		
+	}
 	
     stages {	
 	   stage('Scm Checkout') {            
@@ -47,6 +47,15 @@ pipeline {
 
        }
             }
+            
+            stage('Deploy to kubernetes'){
+        steps{
+            
+            step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'app.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+		  
+        }
+       }
+            
     }
 }
             
