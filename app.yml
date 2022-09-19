@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pet-app
+spec:
+  selector:
+    matchLabels:
+      app: pet-app
+  template:
+    metadata:
+      labels:
+        app: pet-app
+    spec:
+      containers:
+      - name: pet-app
+        image: balraj0017/app:latest
+        ports:
+        - containerPort: 8080
