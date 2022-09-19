@@ -13,11 +13,12 @@ pipeline {
 	}
 	
     stages {	
-	   stage('Scm Checkout') {            
-		steps {
-                  checkout scm
-		}	
-           }
+	   stage('checkout git'){
+            steps{
+                 git branch: 'main', url: 'https://github.com/Balraj0017/spring-petclinic.git'
+            }
+           
+        }
            
 // 	   stage('Build') { 
 //                 steps {
@@ -48,7 +49,7 @@ pipeline {
        }
             }
             
-            stage('Deploy to kubernetes'){
+            stage('Deploy to cluster'){
         steps{
             
             step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'app.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
