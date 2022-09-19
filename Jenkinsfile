@@ -51,8 +51,9 @@ pipeline {
             
             stage('Deploy to cluster'){
         steps{
+                sh 'ls'
             
-            step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'app.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+//             step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'app.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
 		  
         }
        }
